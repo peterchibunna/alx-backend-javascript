@@ -1,0 +1,21 @@
+import Car from './10-car';
+
+export default class EVCar extends Car {
+  constructor(brand, motor, color, range) {
+    super(brand, motor, color);
+    this._range = range;
+  }
+
+  static get [Symbol.species]() {
+    return Car;
+  }
+
+  cloneCar() {
+    /**
+     * see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/species#examples
+     */
+    const MainClass = this.constructor[Symbol.species];
+
+    return new MainClass();
+  }
+}
