@@ -5,7 +5,7 @@ export default function cleanSet(set, startString) {
       return '';
     }
     set.forEach((item) => {
-      if (item.startsWith(startString)) {
+      if (typeof item === 'string' && item.startsWith(startString)) {
         arr.push(item.replace(startString, ''));
       }
     });
