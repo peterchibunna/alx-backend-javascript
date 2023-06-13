@@ -53,7 +53,7 @@ app.get('/', (req, response) => {
 });
 app.get('/students', (_, res) => {
   countStudents(inputDatabase).then((report) => {
-    res.send(report.join('\n'));
+    // res.send(report.join('\n'));
   }).catch((err) => {
     const response = [];
     response.push(err instanceof Error ? err.message : err.toString());
