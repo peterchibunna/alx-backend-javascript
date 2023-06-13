@@ -52,12 +52,10 @@ app.get('/', (req, response) => {
   response.send('Hello Holberton School!');
 });
 app.get('/students', (_, res) => {
-  const response = [];
-
   countStudents(inputDatabase).then((report) => {
-    const responseText = report.join('\n');
-    res.send(responseText);
+    res.send(report);
   }).catch((err) => {
+    const response = [];
     response.push(err instanceof Error ? err.message : err.toString());
     const responseText = response.join('\n');
     res.send(responseText);
