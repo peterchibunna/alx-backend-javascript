@@ -2,11 +2,11 @@ const fs = require('fs');
 
 function countStudents(filename) {
   return new Promise((resolve, reject) => {
-    fs.readFile(filename, { encoding: 'utf8', flag: 'r' }, (err, data)=> {
-      if(err){
-        reject(new Error('Cannot load the database'))
+    fs.readFile(filename, { encoding: 'utf8', flag: 'r' }, (err, data) => {
+      if (err) {
+        reject(new Error('Cannot load the database'));
       }
-      if(data){
+      if (data) {
         const lines = data.split('\n');
         const fields = {};
         const firstNames = {};
