@@ -16,6 +16,7 @@ function countStudents(filename) {
         reject(new Error('Cannot load the database'));
       }
       if (data) {
+        output.push('This is the list of our students');
         const lines = data.split('\n');
         const fields = {};
         const firstNames = {};
