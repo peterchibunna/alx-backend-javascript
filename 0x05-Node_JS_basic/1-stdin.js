@@ -6,5 +6,7 @@ process.stdin.on("end", () => {
 
 process.stdin.on('readable',  ()=> {
   const input = process.stdin.read();
-  process.stdout.write(`Your name is: ${input.toString()}`);
+  if (input != null) {
+    process.stdout.write(`Your name is: ${input}`);
+  }
 });
