@@ -51,9 +51,9 @@ function countStudents(filename) {
 app.get('/', (req, response) => {
   response.send('Hello Holberton School!');
 });
-app.get('/students', (_, res) => {
+app.get('/students', (req, res) => {
   countStudents(inputDatabase).then((report) => {
-    // res.send(report.join('\n'));
+    res.send(report.join('\n'));
   }).catch((err) => {
     const response = [];
     response.push(err instanceof Error ? err.message : err.toString());
