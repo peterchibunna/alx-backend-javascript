@@ -11,7 +11,7 @@ const [a, b, inputDatabase] = process.argv;
 function countStudents(filename) {
   return new Promise((resolve, reject) => {
     const output = [];
-    fs.readFile(filename, {encoding: 'utf8', flag: 'r'}, (err, data) => {
+    fs.readFile(filename, { encoding: 'utf8', flag: 'r' }, (err, data) => {
       if (err) {
         reject(new Error('Cannot load the database'));
       }
@@ -42,7 +42,7 @@ function countStudents(filename) {
         for (const key in fields) {
           output.push(`Number of students in ${key}: ${fields[key]}. List: ${firstNames[key].join(', ')}`);
         }
-        resolve(output.join('\n'));
+        resolve(output);
       }
     });
   });
@@ -52,25 +52,14 @@ app.get('/', (req, response) => {
   response.send('Hello Holberton School!');
 });
 app.get('/students', (_, res) => {
-  const responseParts = [];
-
-  countStudents(inputDatabase)
-      .then((report) => {
-        responseParts.push(report);
-        const responseText = responseParts.join('\n');
-        res.setHeader('Content-Type', 'text/plain');
-        res.setHeader('Content-Length', responseText.length);
-        res.statusCode = 200;
-        res.write(Buffer.from(responseText));
-      })
-      .catch((err) => {
-        responseParts.push(err instanceof Error ? err.message : err.toString());
-        const responseText = responseParts.join('\n');
-        res.setHeader('Content-Type', 'text/plain');
-        res.setHeader('Content-Length', responseText.length);
-        res.statusCode = 200;
-        res.write(Buffer.from(responseText));
-      });
+  countStudents(inputDatabase).then((report) => {
+    res.send(report.join('\n'));
+  }).catch((err) => {
+    const response = [];
+    response.push(err instanceof Error ? err.message : err.toString());
+    const responseText = response.join('\n');
+    res.send(responseText);
+  });
 });
 
 app.listen(PORT, HOST, () => {
