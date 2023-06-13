@@ -10,7 +10,7 @@ const [a, b, inputDatabase] = process.argv;
 
 function countStudents(filename) {
   return new Promise((resolve, reject) => {
-    let output = [];
+    const output = [];
     fs.readFile(filename, { encoding: 'utf8', flag: 'r' }, (err, data) => {
       if (err) {
         reject(new Error('Cannot load the database'));
