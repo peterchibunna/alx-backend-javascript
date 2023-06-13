@@ -1,8 +1,8 @@
 const fs = require('fs');
 
-function countStudents (filename) {
+function countStudents(filename) {
   if (fs.existsSync(filename) && fs.statSync(filename).isFile()) {
-    const data = fs.readFileSync(filename, { encoding: 'utf8', flag: 'r' });
+    const data = fs.readFileSync(filename, {encoding: 'utf8', flag: 'r'});
     const lines = data.split('\n');
     const fields = {};
     const firstNames = {};
@@ -31,3 +31,5 @@ function countStudents (filename) {
     throw new Error('Cannot load the database');
   }
 }
+
+module.exports = countStudents;
