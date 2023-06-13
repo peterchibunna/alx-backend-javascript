@@ -2,12 +2,12 @@ const fs = require('fs');
 
 function countStudents(filename) {
   if (fs.existsSync(filename) && fs.statSync(filename).isFile()) {
-    const data = fs.readFileSync(filename, {encoding: 'utf8', flag: 'r'});
+    const data = fs.readFileSync(filename, { encoding: 'utf8', flag: 'r' });
     const lines = data.split('\n');
     const fields = {};
     const firstNames = {};
     let numStudents = -1; // 1st line is a header
-    lines.forEach(function (line) {
+    lines.forEach((line) => {
       if (line.trim() !== '') {
         const fieldName = line.split(',')[3];
         const firstName = line.split(',')[0];
@@ -24,6 +24,7 @@ function countStudents(filename) {
       }
     });
     console.log(`Number of students: ${numStudents}`);
+    // eslint-disable-next-line guard-for-in
     for (const key in fields) {
       console.log(`Number of students in ${key}: ${fields[key]}. List: ${firstNames[key].join(', ')}`);
     }
