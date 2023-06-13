@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from 'fs';
 
 const customSortCaseIns = (a, b) => {
   if (a[0].toLowerCase() < b[0].toLowerCase()) {
@@ -22,6 +22,7 @@ function readDatabase(filename) {
         const lines = data.split('\n');
         const fields = {};
         const firstNames = {};
+        // eslint-disable-next-line no-unused-vars
         let numStudents = -1; // 1st line is a header
         lines.forEach((line) => {
           if (line.trim() !== '') {
@@ -39,9 +40,8 @@ function readDatabase(filename) {
             numStudents += 1;
           }
         });
-        Object.entries(fields).sort(customSortCaseIns)
+        Object.entries(fields).sort(customSortCaseIns);
         // output.push(`Number of students: ${numStudents}`);
-        // todo: order the fields by key
         // eslint-disable-next-line guard-for-in
         for (const key in fields) {
           output.push(`Number of students in ${key}: ${fields[key]}. List: ${firstNames[key].join(', ')}`);

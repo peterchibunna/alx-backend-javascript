@@ -1,15 +1,6 @@
 import readDatabase from '../utils';
 
 const VALID_MAJORS = ['CS', 'SWE'];
-const customSortCaseIns = (a, b) => {
-  if (a[0].toLowerCase() < b[0].toLowerCase()) {
-    return -1;
-  }
-  if (a[0].toLowerCase() > b[0].toLowerCase()) {
-    return 1;
-  }
-  return 0;
-};
 
 class StudentsController {
   static getAllStudents(request, response) {
