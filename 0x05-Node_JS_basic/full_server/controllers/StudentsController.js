@@ -16,7 +16,7 @@ class StudentsController {
   static getAllStudentsByMajor(request, response) {
     // eslint-disable-next-line no-unused-vars
     const [a, b, dataPath] = process.argv;
-    const {major} = request.params;
+    const { major } = request.params;
 
     if (!VALID_MAJORS.includes(major)) {
       response.status(500).send('Major parameter must be CS or SWE');
@@ -24,10 +24,10 @@ class StudentsController {
     }
     readDatabase(dataPath).then((output) => {
       const filteredOutput = [];
-      output.forEach(function(line){
-        const testString1 = `Number of students in`;
+      output.forEach((line) => {
+        const testString1 = 'Number of students in';
         const testString2 = `Number of students in ${major}`;
-        if(line.startsWith(testString1) && line.startsWith(testString2)){
+        if (line.startsWith(testString1) && line.startsWith(testString2)) {
           filteredOutput.push(`List:${line.split('List:')[1]}`);
         }
       });
