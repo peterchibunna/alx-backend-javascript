@@ -55,7 +55,7 @@ app.get('/students', (req, res) => {
   countStudents(inputDatabase).then((report) => {
     res.send(report.join('\n'));
   }).catch((err) => {
-    const response = [];
+    const response = ['This is the list of our students'];
     response.push(err instanceof Error ? err.message : err.toString());
     const responseText = response.join('\n');
     res.send(responseText);
