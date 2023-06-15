@@ -90,6 +90,23 @@ describe("calculateNumber", function () {
         const c = calculateNumber(operation, a, b);
         assert.strictEqual(c, c);
       });
+      it('negative number and 0', () => {
+        const a = -5.0, b = 0;
+        const c = calculateNumber(operation, a, b);
+        assert.strictEqual(c, c);
+      });
+
+      it('negative number and number rounded down to zero', () => {
+        const a = -5.0, b = 0.2;
+        const c = calculateNumber(operation, a, b);
+        assert.strictEqual(c, c);
+      });
+
+      it('negative number and number rounded up to zero', () => {
+        const a = -5.0, b = -0.2;
+        const c = calculateNumber(operation, a, b);
+        assert.strictEqual(c, c);
+      });
     });
 
   });
