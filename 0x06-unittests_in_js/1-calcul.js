@@ -5,10 +5,13 @@ function calculateNumber(operation, a, b) {
     case 'SUBTRACT':
       return Math.round(a) - Math.round(b);
     case 'DIVIDE':
-      if (Math.round(b) === 0){
+      if (Math.round(b) === 0) {
         return 'Error';
+      } else {
+        return Math.round(a) / Math.round(b);
       }
-      return Math.round(a) / Math.round(b);
+    default:
+      return 0;
   }
 
 }
