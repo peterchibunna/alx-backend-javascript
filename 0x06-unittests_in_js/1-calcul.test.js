@@ -2,7 +2,6 @@ const assert = require("assert");
 const calculateNumber = require('./1-calcul');
 
 describe("calculateNumber", function () {
-  /*
   describe("Operation: SUM", function () {
     it(`between 2 integers`, function () {
       const a = 1, b = 2;
@@ -220,7 +219,7 @@ describe("calculateNumber", function () {
       assert.equal(calculateNumber('SUBTRACT', 0.0, 0.0), 0);
     });
   });
-  */
+
   describe("Operation: DIVIDE", function () {
     it(`between 2 integers`, function () {
       const a = 1, b = 2;
@@ -286,14 +285,11 @@ describe("calculateNumber", function () {
     //   const b = 5.3467, a = 0;
     //   assert.equal(calculateNumber('DIVIDE', a, b), -5);
     // });
-    // it(`between all zeroes`, function () {
-    //   const a = 0, b = 0;
-    //   assert.equal(calculateNumber('DIVIDE', a, b), 0);
-    // });
-    // it('negative number and 0', () => {
-    //   const a = -5.0, b = 0;
-    //   assert.equal(calculateNumber('DIVIDE', a, b), -5);
-    // });
+
+    it('negative number and 0', () => {
+      const a = -5.0, b = 0;
+      assert.equal(calculateNumber('DIVIDE', a, b), 'Error');
+    });
     //
     // it('equal positive numbers', () => {
     //   const a = 5.0, b = 5.0;
@@ -305,28 +301,24 @@ describe("calculateNumber", function () {
     //   assert.equal(calculateNumber('DIVIDE', a, b), -4);
     // });
     //
-    // it('equal negative numbers', () => {
-    //   const a = -2.0, b = -2.0;
-    //   assert.equal(calculateNumber('DIVIDE', a, b), 0);
-    // });
+    it('equal negative numbers', () => {
+      const a = -2.0, b = -2.0;
+      assert.equal(calculateNumber('DIVIDE', a, b), 1);
+    });
     //
-    // it('equal negative numbers (alternate)', () => {
-    //   const a = -2.2, b = -1.7;
-    //   assert.equal(calculateNumber('DIVIDE', a, b), 0);
-    // });
+    it('equal negative numbers (alternate)', () => {
+      const a = -2.2, b = -1.7;
+      assert.equal(calculateNumber('DIVIDE', a, b), 1);
+    });
     //
-    // it('negative and positive numbers', () => {
-    //   const a = -2.0, b = 2.0;
-    //   assert.equal(calculateNumber('DIVIDE', a, b), -4);
-    // });
-    //
-    // it('positive and negative numbers', () => {
-    //   const b = -2.0, a = 2.0;
-    //   assert.equal(calculateNumber('DIVIDE', a, b), 4);
-    // });
-    //
-    // it('0 and 0', () => {
-    //   assert.equal(calculateNumber('DIVIDE', 0.0, 0.0), 0);
-    // });
+    it('negative and positive numbers', () => {
+      const a = -2.0, b = 2.0;
+      assert.equal(calculateNumber('DIVIDE', a, b), -1);
+    });
+
+
+    it('0 and 0', () => {
+      assert.equal(calculateNumber('DIVIDE', 0.0, 0.0), 'Error');
+    });
   });
 });
