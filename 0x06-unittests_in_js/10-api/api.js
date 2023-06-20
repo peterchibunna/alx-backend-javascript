@@ -2,7 +2,7 @@ const express = require('express');
 var bodyParser = require('body-parser');
 
 const app = express();
-// app.use(bodyParser.urlencoded({ extended: false }));
+// without the below line, req.body is not received
 app.use(bodyParser.json());
 
 const PORT = 7865;
