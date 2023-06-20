@@ -7,6 +7,7 @@ app.get('/', (any, res) => {
   res.send('Welcome to the payment system');
 });
 
+// app.get('/cart/:id(\d+)', (req, res) => {
 app.get('/cart/:id', (req, res) => {
   const {id} = req.params;
   const cartId = Number(id);
